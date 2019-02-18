@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
           <BrowserRouter>
-            <div>
+            <div className="div">
               <Header />
               <Route path='/' exact component={Welcome} />
               <Route path='/test/stress-level' component={StressLevelTest} />

@@ -15,8 +15,13 @@ code {
     monospace;
 }
 
+html
+{ background: url('./comps/img/bckg.png');
+  background-repeat: repeat;
+}
+
 #root
 {
 	width : 100%;
-    height : 100%;
+  height : 100%;
 }

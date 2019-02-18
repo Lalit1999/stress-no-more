@@ -18,3 +18,27 @@
 {
 	font-size : 1.6rem !important;
 }
+
+.res, .message
+{
+	font-size: 2.5rem ;
+}
+
+.score
+{
+	font-size : 10rem;
+}
+
+.tip-btn
+{ 
+	text-decoration: none ;
+	color: white ;
+	background-color: #32CD32 ;
+	border-radius: 999rem ;
+	padding: 0 1em ;
+}
+
+.left
+{	margin-bottom: 1em ;
+	text-align: left ;
+}

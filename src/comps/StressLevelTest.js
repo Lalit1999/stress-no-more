@@ -1,8 +1,8 @@
 import React from 'react' ;
-import { Redirect } from 'react-router-dom' ;
 
 import './css/stressleveltest.css' ;
 import Radio from './radio.js' ;
+import Final from './Final.js' ;
 
 const resp = ['Mostly', 'Many Times', 'Sometimes', 'Rarely', 'Never'] ; 
 
@@ -22,6 +22,7 @@ const ques = [
 class StressLevelTest extends React.Component 
 {	constructor()
 	{	super() ;
+		this.current = " " ;
 		this.state = {
 			resp : [] ,
 			count : 0 ,
@@ -29,11 +30,16 @@ class StressLevelTest extends React.Component
 	}
 
 	RadioDiv = () => {
-	return resp.map((str, i) => <Radio key={i} text={str} />)
+	return resp.map((str, i) => <Radio key={i} text={str} record={this.recordResp} />)
+	}
+
+	recordResp = (text) => {
+		this.current = text	;
 	}
 
 	onPrevClick = () => {
 		let ct  = this.state.count ;
+		let arr = this.state.resp.pop() ;
 		if (this.state.count > 0)
 			{	this.setState({ count : ct-1 }) ;
 			}
@@ -41,14 +47,19 @@ class StressLevelTest extends React.Component
 
 	onNextClick = () => {
 		let ct  = this.state.count ;
-		if (this.state.count < 9)
-			{	console.log(this.state) ;
+		if(this.current !== " ")
+		{	let arr2 = this.state.resp.push( this.current ) ;
+			if (this.state.count < 10 )
+			{	
+				// console.log(this.state) ;
 				this.setState({count : ct+1 }) ;
 			}
+		}
 	}
 
 	render()
-	{	console.log(this.state) ;
+	{	
+		// console.log(this.state) ;
 		if(this.state.count <10)
 		{
 			return (
@@ -68,7 +79,9 @@ class StressLevelTest extends React.Component
 				) ;
 		}
 		else
-			return <Redirect push to="/" /> 
+			return ( 
+				<Final resp={this.state.resp}/>
+				) ;
 	}
 }
 
